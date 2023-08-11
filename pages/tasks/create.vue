@@ -20,18 +20,6 @@
                             <input type="text" v-model="task.due_date" class="form-control">
                         </div>
                         <div class="mb-3">
-                            <label>comments</label>
-                            <input type="text" v-model="task.comments" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label>description</label>
-                            <input type="text" v-model="task.description" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label>tags</label>
-                            <input type="text" v-model="task.tags" class="form-control">
-                        </div>
-                        <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </div>
 
@@ -75,7 +63,6 @@ export default {
             };
             axios.post(url,this.task, { headers })
                 .then(response => {
-                    alert('hola');
                     console.log('Respuesta:', response.data);
                     this.isLoading = false;
             this.isLoadingText = 'Loading';
