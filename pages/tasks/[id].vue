@@ -10,7 +10,7 @@
                     <loading :title="isLoadingText" />
                 </div>
                 <div v-else>
-                    <form @submit.prevent="saveTask">
+                    <form @submit.prevent="updateTask">
                         <div class="mb-3">
                             <label>Title</label>
                             <input type="text" v-model="tTittle" class="form-control">
@@ -42,15 +42,15 @@ export default {
                 token:"e864a0c9eda63181d7d65bc73e61e3dc6b74ef9b82f7049f1fc7d9fc8f29706025bd271d1ee1822b15d654a84e1a0997b973a46f923cc9977b3fcbb064179ecd",
             },
             isLoading: false,
-            isLoadingText: 'Loading'
+            isLoadingText: 'Loading',
+            baseURL: 'https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks',
         }
     },
     mounted(){
         this.taskID = this.$route.params.id
     },
     methods: {
-        saveTask() {
-
+        updateTask() {
             this.isLoading = true;
             this.isLoadingText = 'Saving'
 
@@ -63,8 +63,8 @@ export default {
             console.log('hola');
             console.log(this.task);
 
-             const url = 'https://ecsdevapi.nextline.mx/vdev/tasks-challenge/tasks/'+this.taskID;
-             const token = 'e864a0c9eda63181d7d65bc73e61e3dc6b74ef9b82f7049f1fc7d9fc8f29706025bd271d1ee1822b15d654a84e1a0997b973a46f923cc9977b3fcbb064179ecd';
+             const url = this.baseURL+'/'+this.taskID;
+             const token = this.task.token;
              const headers = {
                  Authorization: `Bearer ${token}`
              };
