@@ -1,7 +1,7 @@
 <template>
     <div class="custom-container">
-        <v-card color="grey-lighten-4" flat height="255px" width="100%" class="round1">
-            <v-toolbar collapse>
+        <v-card color="grey-lighten-3" flat height="240px" width="100%" class="round1">
+            <v-toolbar collapse color="grey-lighten-1">
                 <v-btn icon>
                     <v-icon>mdi-github</v-icon>
                 </v-btn>
@@ -11,7 +11,7 @@
                 </v-btn>
             </v-toolbar>
             <h1 class="title1">Task-e manager</h1>
-            <h2 class="title2">Create task</h2>
+            <!-- <h2 class="title2">Create task</h2>  -->
 
         </v-card>
         <!-- <v-btn size="x-large" icon="mdi-plus" class="custom-button"></v-btn> -->

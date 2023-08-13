@@ -1,20 +1,23 @@
 <template>
     <v-dialog v-model="dialog" :scrim="false" width="30%" transition="dialog-top-transition">
         <template v-slot:activator="{ props }">
-            <v-btn size="x-large" icon="mdi-plus" class="custom-button" v-bind="props"></v-btn>
+            <div class="custom-button">
+                <v-btn size="100" icon="mdi-plus" v-bind="props">
+                    <v-icon size="70">mdi-plus</v-icon>
+                </v-btn>
+                <br><h3 class="titleAdd">Add task!</h3>
+            </div>
+
+
         </template>
         <v-card>
-            <v-toolbar color="primary">
+            <v-toolbar color="black">
                 <v-btn icon @click="dialog = false">
                     <v-icon>mdi-close</v-icon>
                 </v-btn>
                 <v-toolbar-title>Create task</v-toolbar-title>
                 <v-spacer></v-spacer>
             </v-toolbar>
-
-
-
-
             <div class="mt-5">
                 <div class="card">
                     <div class="card-body">
@@ -89,7 +92,7 @@ export default {
                     console.log('Respuesta:', response.data);
                     this.isLoading = false;
                     this.isLoadingText = 'Loading';
-                    
+
                     this.greet2();
                     this.dialog = false
                 })
@@ -114,10 +117,13 @@ export default {
     transition: transform .2s ease-in-out;
 }
 
+.titleAdd{
+
+}
+
 .custom-button {
     position: absolute;
-    bottom: -30px;
-    /* Ajusta este valor según tu diseño */
+    bottom: -70px;
     left: 50%;
     transform: translateX(-50%);
 }

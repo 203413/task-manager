@@ -1,22 +1,18 @@
 <template>
     <v-dialog v-model="dialog" :scrim="false" width="30%" transition="dialog-bottom-transition">
         <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" color="cyan" density="comfortable" class="mrn">
-                Edit <v-icon end icon="mdi-pencil"></v-icon>
+            <v-btn v-bind="props" color="cyan" icon density="comfortable" class="mrn">
+                <v-icon icon="mdi-pencil" color="white"></v-icon>
             </v-btn>
         </template>
         <v-card>
-            <v-toolbar  color="primary">
+            <v-toolbar  color="cyan">
                 <v-btn icon  @click="dialog = false">
-                    <v-icon>mdi-close</v-icon>
+                    <v-icon color="white">mdi-close</v-icon>
                 </v-btn>
-                <v-toolbar-title>Edit task</v-toolbar-title>
+                <v-toolbar-title style="color: white;">Edit task</v-toolbar-title>
                 <v-spacer></v-spacer>
             </v-toolbar>
-
-
-
-
             <div class="mt-5">
                 <div class="card">
                     <div class="card-body">
