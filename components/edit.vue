@@ -22,11 +22,11 @@
                         <div v-else>
                             <form @submit.prevent="updateTask">
                                 <div class="mb-3">
-                                    <label>Title</label>
+                                    <label>Task</label>
                                     <input type="text" v-model="tTittle" class="form-control">
                                 </div>
                                 <div class="mb-3">
-                                    <label>due due_date</label>
+                                    <label>Due date</label>
                                     <input type="text" v-model="tDate" class="form-control">
                                 </div>
                                 <!-- <div class="mb-3">
@@ -116,7 +116,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .dialog-bottom-transition-enter-active,
 .dialog-bottom-transition-leave-active {
     transition: transform .2s ease-in-out;

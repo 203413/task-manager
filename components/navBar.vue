@@ -2,7 +2,7 @@
     <div class="custom-container">
         <v-card color="grey-lighten-3" flat height="240px" width="100%" class="round1">
             <v-toolbar collapse color="grey-lighten-1">
-                <v-btn icon>
+                <v-btn icon @click="openLink">
                     <v-icon>mdi-github</v-icon>
                 </v-btn>
 
@@ -26,6 +26,9 @@ export default{
         greet() {
             this.$emit("getTasks");
         },
+        openLink(){
+            window.open('https://github.com/203413/task-manager', '_blank');
+        }
     }
 }
 </script>
@@ -43,7 +46,7 @@ export default{
 }
 
 .title1 {
-    
+    font-family: "Segoe UI";
     font-weight: 900;
     font-size: clamp(40px, 8vw, 90px);
 }

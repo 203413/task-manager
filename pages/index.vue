@@ -1,8 +1,8 @@
 <template>
     <navBar @getTasks="getTasks" />
-    <div class="container margin">
+    <div class="containerMain margin">
         <div class="div1">
-            <div class="titleToDo">
+            <div class="titleToDo elevation-3">
                 <h1>To do</h1>
             </div>
 
@@ -19,8 +19,8 @@
                         <td>
                             <!-- <input type="checkbox" :checked="task.is_completed === 1" @change="toggleCompleted(task)"
                                 :id="'checkbox_' + index" /> -->
-                            <v-btn icon class="elevation-0" @click="toggleCompleted(task, 1)"
-                                ><v-icon>mdi-checkbox-blank-outline</v-icon></v-btn>
+                            <v-btn icon class="elevation-0"
+                                @click="toggleCompleted(task, 1)"><v-icon>mdi-checkbox-blank-outline</v-icon></v-btn>
                             {{ task.title }}
                         </td>
                         <td>{{ task.due_date }}</td>
@@ -53,8 +53,8 @@
                         <td>
                             <!-- <input type="checkbox" :checked="task.is_completed === 1" @change="toggleCompleted(task)"
                                 :id="'checkbox_' + index" /> -->
-                            <v-btn icon class="elevation-0" @click="toggleCompleted(task, 0)"
-                                ><v-icon>mdi-checkbox-marked</v-icon></v-btn>
+                            <v-btn icon class="elevation-0"
+                                @click="toggleCompleted(task, 0)"><v-icon>mdi-checkbox-marked</v-icon></v-btn>
                             {{ task.title }}
                         </td>
                         <td>{{ task.due_date }}</td>
@@ -84,6 +84,8 @@ export default {
     },
     methods: {
         getTasks() {
+            this.completedTasks = {};
+            this.uncompletedTasks = {};
             const url = this.baseURL;
             const token = this.token;
             const headers = {
@@ -92,13 +94,9 @@ export default {
             axios.get(url, { params: { token: token }, headers: headers })
                 .then(response => {
                     console.log('Respuesta:', response.data, response.status);
-                    this.completedTasks = {};
-                    this.uncompletedTasks = {};
-                    this.tasks = response.data
-                    const completedTasks = response.data.filter(task => task.is_completed === 1);
-                    const uncompletedTasks = response.data.filter(task => task.is_completed === 0);
-                    this.completedTasks = completedTasks;
-                    this.uncompletedTasks = uncompletedTasks;
+                    this.tasks = response.data;
+                    this.completedTasks = response.data.filter(task => task.is_completed === 1);
+                    this.uncompletedTasks = response.data.filter(task => task.is_completed === 0);
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -155,7 +153,7 @@ export default {
                             console.log(this.tasks);
                             this.tasks = {};
                             console.log(this.tasks);
-                            this.reRenderChildComponent();
+                            //this.reRenderChildComponent();
                             this.getTasks();
                         })
                         .catch(error => {
@@ -167,16 +165,60 @@ export default {
                 });
             console.log(task.title);
         },
-        reRenderChildComponent() {
-            this.tablekey += 1;
-        }
     }
 }
 </script>
 
-<style escoped>
+<style scoped>
+.containerMain {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto
+        
+
+}
+
+@media (min-width:576px) {
+
+.containerMain{
+    max-width: 540px
+}
+}
+
+@media (min-width:768px) {
+
+.containerMain {
+    max-width: 720px
+}
+}
+
+@media (min-width:992px) {
+
+.containerMain {
+    max-width: 960px
+}
+}
+
+@media (min-width:1200px) {
+
+.containerMain {
+    max-width: 1140px
+}
+}
+
+@media (min-width:1400px) {
+
+.containerMain {
+    max-width: 1320px
+}
+}
+
 .margin {
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
 .mrn {
@@ -193,6 +235,7 @@ export default {
     width: 100%;
     background-color: black;
     color: white;
+    margin-bottom: 20px;
 }
 
 .titleCompleted {
@@ -229,4 +272,5 @@ export default {
 
 .bottom {
     margin-bottom: 40px;
-}</style>
+}
+</style>

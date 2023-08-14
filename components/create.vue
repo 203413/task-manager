@@ -5,7 +5,8 @@
                 <v-btn size="100" icon="mdi-plus" v-bind="props">
                     <v-icon size="70">mdi-plus</v-icon>
                 </v-btn>
-                <br><h3 class="titleAdd">Add task!</h3>
+                <br>
+                <h3 class="titleAdd">Add task!</h3>
             </div>
 
 
@@ -27,12 +28,12 @@
                         <div v-else>
                             <form @submit.prevent="saveTask">
                                 <div class="mb-3">
-                                    <label>Title</label>
-                                    <input type="text" v-model="task.title" class="form-control">
+                                    <label>Task</label>
+                                    <input type="text" v-model="task.title">
                                 </div>
                                 <div class="mb-3">
-                                    <label>due due_date</label>
-                                    <input type="text" v-model="task.due_date" class="form-control">
+                                    <label>Due date</label>
+                                    <input type="text" v-model="task.due_date" placeholder="YYYY-MM-DD">
                                 </div>
                                 <!-- <div class="mb-3">
                                     <button type="submit" class="btn btn-primary">Save</button>
@@ -94,7 +95,7 @@ export default {
                     this.isLoadingText = 'Loading';
 
                     this.greet2();
-                    this.dialog = false
+                    this.dialog = false;
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -111,19 +112,22 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .dialog-bottom-transition-enter-active,
 .dialog-bottom-transition-leave-active {
     transition: transform .2s ease-in-out;
 }
 
-.titleAdd{
-
+.titleAdd {
+    font-family: Roboto;
+    font-size: 1.75rem;
 }
+
+
 
 .custom-button {
     position: absolute;
-    bottom: -70px;
+    bottom: -80px;
     left: 50%;
     transform: translateX(-50%);
 }

@@ -10,10 +10,11 @@
                 <v-btn icon @click="dialog = false">
                     <v-icon color="white">mdi-close</v-icon>
                 </v-btn>
-                <v-toolbar-title style="color: white;">Edit task</v-toolbar-title>
+                <v-toolbar-title style="color: white;">Delete task</v-toolbar-title>
                 <v-spacer></v-spacer>
             </v-toolbar>
-            u sure?
+            <div class="card-body">Delete this task?</div>
+            
 
             <v-card-actions>
                 <v-spacer></v-spacer>
@@ -77,7 +78,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .dialog-bottom-transition-enter-active,
 .dialog-bottom-transition-leave-active {
     transition: transform .2s ease-in-out;
